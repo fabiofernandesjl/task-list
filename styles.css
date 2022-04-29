@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #414345, #232526);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  border: 2px solid #fff;
+  padding: 30px 30px;
+  border-radius: 5px;
+  width: 60%;
+  min-width: 500px;
+}
+
+.input-container {
+  background-color: #fff;
+  padding: 30px 30px;
+  border-radius: 5px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-container input {
+  width: 70%;
+  padding: 7px;
+  /*border: 2px solid;*/
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.input-container input:focus {
+  outline: none;
+  border-color: #41b883;
+}
+
+.input-container button {
+  background-color: #41b883;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tasks > p {
+  background-color: #fff;
+  margin-top: 15px;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.tasks > p {
+  cursor: default;
+}
+
+.tasks > p i {
+  cursor: pointer;
+}
+
+.completed {
+  background-color: #41b883;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+.error::placeholder {
+  color: red;
+}
