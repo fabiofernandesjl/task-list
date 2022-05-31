@@ -5,19 +5,11 @@ const tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks")) || [];
 
 const validateInput = () => addTaskInput.value.trim().length > 0;
 
-const InputChange = () => {
-  const InputIsValid = validateInput();
-
-  if (InputIsValid) {
-    return addTaskInput.classList.remove("error");
-  }
-};
-
 const addTask = () => {
   const InputIsValid = validateInput();
 
   if (!InputIsValid) {
-    return addTaskInput.classList.add("error");
+    return;
   }
 
   const taskContent = document.createElement("p");
@@ -33,9 +25,11 @@ const addTask = () => {
 
   allTasksContainer.appendChild(taskContent);
 
-  tasksFromLocalStorage.push(taskContent.innerText);
+  tasksFromLocalStorage.push({
+    description: taskContent.innerText,
+  });
 
-  updateLocalStorage(taskContent);
+  updateLocalStorage();
 
   addTaskInput.value = "";
 };
@@ -52,7 +46,7 @@ const handleDeleteClick = (taskContent) => {
 
 const updateLocalStorage = () => {
   const tasks = tasksFromLocalStorage.map((task) => {
-    return { description: task };
+    return { description: task.description };
   });
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
@@ -77,6 +71,5 @@ const refreshTasksUsingLocalStorage = () => {
 };
 
 addTaskButton.addEventListener("click", () => addTask());
-addTaskInput.addEventListener("change", () => InputChange());
 
 refreshTasksUsingLocalStorage();
